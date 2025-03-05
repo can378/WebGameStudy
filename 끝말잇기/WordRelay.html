@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <word-relay start-word="바보"></word-relay>
+        <word-relay start-word="안녕"></word-relay>
+        <word-relay start-word="신기"></word-relay>
+    </div>
+
+    <script>
+
+        //component는 각각의 data를 가진다. 전역 component.
+        Vue.component('word-relay',{
+            template:`
+                <div>
+                    <div> {{word}} </div>
+                    <form v-on:submit="onSubmitForm">
+                        <input type="text" v-model="value" ref="answer">
+                        <button type="submit">입력</button>
+                    </form>
+                    <div>{{result}}</div>
+                </div>
+            `,
+            props:['start-word'],
+            data(){
+                return{
+                    word:this.startWord,
+                    result:'',
+                    value:'',
+                };
+            },
+            methods:{
+                onSubmitForm(e){
+                    e.preventDefault();
+                    if(this.word[this.word.length-1]===this.value[0]){
+                        this.result="정답!";
+                        this.word=this.value;
+                    }else{
+                        this.result="틀림";
+                        
+                    }
+                    this.value='';
+                    this.$refs.answer.focus();
+                }
+            }
+        })
+    </script>
+    <script>
+        const app=new Vue({
+            el:'#app',
+            
+        });
+    </script>
+</body>
+</html>
