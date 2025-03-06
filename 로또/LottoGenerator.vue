@@ -6,7 +6,7 @@
         <lotto-ball v-for="ball in winBalls" v-bind:key=ball v-bind:number=ball></lotto-ball>
     </div>
     <div>보너스</div>
-    <lotto-ball v-if="bonus">{{bonus}}</lotto-ball>
+    <lotto-ball v-if="bonus" v-bind:number="bonus"></lotto-ball>
     <button v-if="redo" @click="onClickRedo">one more time</button>
   </div>
 </template>
@@ -64,7 +64,7 @@ export default {
         this.showBalls();
     },
     watch:{
-        winBalls(val,oldVal){//winBalls를 감시!
+        winBalls(val,oldVal){//winBalls를 감시! 하지만 이거는 웬만하면 쓰지마라. 최후의 수단.
             if(val.length===0){
                 this.showBalls();
             }
