@@ -1,31 +1,22 @@
 <template>
-    <div>
-        <tr-component v-for="(rowData, index) in tableData" 
-            :row-data="rowData" 
-            :row-index="index"
-            v-bind:key="index"
-            :turn="turn">
-        </tr-component>
-
-    </div>
-    
+  <table>
+    <tr-component v-for="(rowData, index) in tableData" 
+        :key="index" 
+        :row-data="rowData" 
+        :row-index="index">
+    </tr-component>
+  </table>
 </template>
 
 <script>
-import TrComponent from './TrComponent.vue';
+  import TrComponent from './TrComponent';
 
-export default {
-    props:{
-        tableData:Array,
+  export default {
+    props: {
+      tableData: Array,
     },
-    components:{
-        TrComponent,
+    components: {
+      TrComponent,
     },
-    data() {
-        return {
-        turn: 'O',
-        };
-    }
-
-}
+  };
 </script>
