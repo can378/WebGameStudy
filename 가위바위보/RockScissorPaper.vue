@@ -64,8 +64,8 @@ export default {
             }
         },100);
         },
-        async onClickBtn(choice){
-            await new Promise()//async는 await를 쓰기 위해서 사용하고 await는 Promise를 쓰기 위해서 쓰는거다.
+        onClickBtn(choice){
+            //await new Promise()//async는 await를 쓰기 위해서 사용하고 await는 Promise를 쓰기 위해서 쓰는거다.
             clearInterval(interval);
             const myScore=scores[choice];
             const cpuScore=scores[computerChoice(this.imgCoord)];
